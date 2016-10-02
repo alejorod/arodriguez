@@ -2,7 +2,9 @@
 <html id="parent">
   <head>
     <meta charset="utf-8">
-    <title>textglitch</title>
+    <title>Alejo Rodriguez</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
 
     <style media="screen">
@@ -157,14 +159,33 @@
         text-align: right;
       }
 
+      .menu-item {
+        position: relative;
+        margin: 15px 0;
+      }
+
+      .menu-item i {
+        display: block;
+        position: absolute;
+        top: 3px;
+        color: white;
+        font-family: 'arcade', monospace;
+        right: -85px;
+        color: #ff6882;
+        font-size: 12px;
+        border: 2px solid;
+        padding: 2px 4px;
+        font-style: normal;
+        border-radius: 5px;
+      }
+
       .menu a {
         position: relative;
-        font-family: 'arcade', monospace;;
-        display: block;
+        font-family: 'arcade', monospace;
+        display: inline-block;
         color: white;
         font-size: 20px;
         text-decoration: none;
-        margin: 15px 0;
         transition-duration: 0.2s;
       }
 
@@ -219,10 +240,21 @@
     </div>
     <div class="menu-container">
       <div class="menu">
-        <a href="#">1. blog</a>
-        <a target="_blank" href="https://github.com/alejorod">>. github</a>
-        <a target="_blank" href="https://www.linkedin.com/in/alejo-rodriguez-bb2887121">$. linkedin</a>
-        <a href="mailto:a.rodsott@gmail.com">a.rodsott@gmail.com</a>
+        <div class="menu-item">
+          <a href="#">1. blog</a><i>soon</i>
+        </div>
+        <div class="menu-item">
+          <a href="#">}. experiments</a><i>soon</i>
+        </div>
+        <div class="menu-item">
+          <a target="_blank" href="https://github.com/alejorod">>. github</a> <br/>
+        </div>
+        <div class="menu-item">
+          <a target="_blank" href="https://www.linkedin.com/in/alejo-rodriguez-bb2887121">$. linkedin</a> <br/>
+        </div>
+        <div class="menu-item">
+          <a href="mailto:a.rodsott@gmail.com">a.rodsott@gmail.com</a> <br/>
+        </div>
       </div>
     </div>
 
@@ -284,10 +316,10 @@
     })();
 
     let glitch = Glitcher.glitchElement(document.getElementById('glitch'));
-    glitch.start();
+    // glitch.start();
 
     document.querySelectorAll('a').forEach((elem) => {
-      var glitch = Glitcher.glitchElement(elem);
+      let glitch = Glitcher.glitchElement(elem);
       elem.onmouseenter = function() {
         glitch.start();
       }
