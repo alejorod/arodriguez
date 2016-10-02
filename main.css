@@ -162,7 +162,7 @@ body {
 .menu-item i {
   display: block;
   position: absolute;
-  top: 5px;
+  top: 2px;
   color: white;
   font-family: 'arcade', monospace;
   color: #ff6882;
@@ -171,6 +171,7 @@ body {
   padding: 2px 4px;
   font-style: normal;
   border-radius: 5px;
+  box-shadow: 0 2px;
 }
 
 .menu a {
@@ -185,6 +186,10 @@ body {
 
 .menu a:focus {
   outline: none;
+}
+
+.menu-item {
+  cursor: pointer;
 }
 
 .menu-item.selected a {
