@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html id="parent">
+  <head>
+    <meta charset="utf-8">
+    <title>textglitch</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+
+    <style media="screen">
+      @font-face {
+        font-family: "arcade";
+        src: url(arcade.ttf) format("truetype");
+      }
+      @keyframes glitch-anim {
+        0% {
+          clip: rect(0, 0, 0, 0);
+        }
+        40% {
+          clip: rect(0, 0, 0, 0);
+        }
+        40.0001% {
+          clip: rect(170px, 455px, 219px, 0);
+        }
+        60% {
+          clip: rect(170px, 455px, 219px, 0);
+        }
+        60.0001% {
+          clip: rect(0, 0, 0, 0);
+        }
+        99.9999% {
+          clip: rect(0, 0, 0, 0);
+        }
+        100% {
+          clip: rect(142px, 455px, 228px, 0);
+        }
+      }
+
+      @keyframes glitch-anim-1 {
+        0% {
+          clip: rect(0, 0, 0, 0);
+        }
+        20% {
+          clip: rect(0, 0, 0, 0);
+        }
+        20.0001% {
+          clip: rect(55px, 455px, 145px, 0);
+        }
+        60% {
+          clip: rect(55px, 455px, 145px, 0);
+        }
+        60.0001% {
+          clip: rect(0, 0, 0, 0);
+        }
+
+        99.9999% {
+          clip: rect(0, 0, 0, 0);
+        }
+        100% {
+          clip: rect(36px, 455px, 83px, 0);
+        }
+      }
+
+      html,
+      body {
+        background: #161719;
+      }
+
+      html.green,
+      html.green body{
+        background: #337333;
+      }
+
+      html.blue,
+      html.blue body{
+        background: #2c73ff;
+      }
+
+      html.red,
+      html.red body{
+        background: #b34343;
+      }
+
+      .title-container {
+        width: 50%;
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 200px 0;
+        padding-left: 280px;
+      }
+
+      span {
+        position: relative;
+        text-shadow: 2px 3px #822828;
+        font-family: 'Bungee Shade', cursive;
+        color: white;
+        display: block;
+        font-size: 129px;
+        letter-spacing: 15px;
+        font-weight: bold;
+        cursor: default;
+      }
+
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .glitch::before {
+        left: 3px;
+        text-shadow: -2px 0 #e25d5d;
+        background: #161719;
+        background-image: url('noise.png');
+        background-blend-mode: hue;
+        clip: rect(0, 0, 0, 0);
+        animation: glitch-anim-1 0.5s infinite linear alternate-reverse;
+      }
+
+      .glitch::after {
+        left: -3px;
+        text-shadow: -2px 0 blue;
+        background: #161719;
+        background-image: url('noise.png');
+        background-blend-mode: hue;
+        clip: rect(0, 0, 0, 0);
+        animation: glitch-anim 1.2s infinite linear alternate-reverse;
+      }
+
+      .green .glitch::after,
+      .green .glitch::before {
+        background: #337333;
+      }
+
+      .blue .glitch::after,
+      .blue .glitch::before {
+        background: #2c73ff;
+      }
+
+      .red .glitch::after,
+      .red .glitch::before {
+        background: #b34343;
+      }
+
+      .menu-container {
+        width: 47%;
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 300px 330px;
+        padding-left: 50px;
+        vertical-align: top;
+      }
+
+      .menu {
+        text-align: right;
+      }
+
+      .menu a {
+        position: relative;
+        font-family: 'arcade', monospace;;
+        display: block;
+        color: white;
+        font-size: 20px;
+        text-decoration: none;
+        margin: 15px 0;
+        transition-duration: 0.2s;
+      }
+
+      .menu a:hover {
+        margin-right: 17px;
+        color: #ff6882;
+        text-shadow: 1px 2px #743de0;
+      }
+
+      @keyframes bounce {
+        0% {
+          transform:translateX(0%);
+        }
+        25% {
+          transform:translateX(-30%);
+        }
+        50% {
+          transform:translateX(0%);
+        }
+        75% {
+          transform:translateX(-30%);
+        }
+        100% {
+          transform:translateX(-0%);
+        }
+      }
+
+      .menu a:hover::after {
+        animation: bounce 1.5s infinite ease;
+        content: ' ←';
+        position: absolute;
+        top: -2px;
+        right: -33px;
+      }
+
+      .noise {
+        position: absolute;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url('noise.png');
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="title-container">
+      <span id="glitch" class="glitch" data-text="a. Ro.">a. <br/> Ro.</span>
+    </div>
+    <div class="menu-container">
+      <div class="menu">
+        <a href="#">1. blog</a>
+        <a target="_blank" href="https://github.com/alejorod">>. github</a>
+        <a target="_blank" href="https://www.linkedin.com/in/alejo-rodriguez-bb2887121">$. linkedin</a>
+        <a href="mailto:a.rodsott@gmail.com">a.rodsott@gmail.com</a>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+    let Glitcher = (function() {
+      let glitchChars = '@#><}@{}()@-_*&%@!~abcdefghijkhlmnopqrstjk';
+      function Glitcher(elem) {
+        this.target = elem;
+        this.originalText = elem.innerText;
+        this.animationId = null;
+        this.lastUpdate = 0;
+        this.threshold = 140;
+        this.glitchSteps = 6;
+      }
+
+      Glitcher.prototype.stop = function () {
+        cancelAnimationFrame(this.animationId);
+        this.target.innerText = this.originalText;
+      };
+
+      Glitcher.prototype.start = function (time) {
+        this.animationId = requestAnimationFrame(this.start.bind(this));
+        this.lastTime = this.lastTime ? this.lastTime : time;
+        var delta = time - this.lastTime;
+
+        if (delta > this.threshold) {
+          this.threshold = 120 + Math.random() * 20;
+          this.lastTime = time;
+          if (this.glitchSteps) {
+            this.glitchSteps--;
+            wordCount = Math.floor(Math.random() * 2) + Math.floor(this.originalText.length / 4);
+            glitchText = this.originalText;
+
+            i = 0;
+            while(i < wordCount) {
+              index = Math.floor(Math.random() * this.originalText.length);
+              if (glitchText[index] && !/\s/.test(glitchText[index])) {
+                i++;
+                glitchCharIndex = Math.floor(Math.random() * glitchChars.length);
+                glitchChar = glitchChars[glitchCharIndex];
+                glitchText = glitchText.substr(0, index) + glitchChar + glitchText.substr(index + 1, glitchText.length);
+              }
+            }
+            this.target.innerText = glitchText;
+          } else {
+            this.target.innerText = this.originalText;
+            this.threshold *= (Math.random() + 14);
+            this.glitchSteps = Math.round(Math.random() * 3) + 3;
+          }
+        }
+      };
+
+      return {
+        glitchElement: function(elem) {
+          return new Glitcher(elem);
+        }
+      };
+    })();
+
+    let glitch = Glitcher.glitchElement(document.getElementById('glitch'));
+    glitch.start();
+
+    document.querySelectorAll('a').forEach((elem) => {
+      var glitch = Glitcher.glitchElement(elem);
+      elem.onmouseenter = function() {
+        glitch.start();
+      }
+
+      elem.onmouseleave = function() {
+        glitch.stop();
+      }
+    });
+
+      var greenBackground = false;
+      var lastTime = 0;
+      var threshold = 700;
+      var target = document.getElementById('parent');
+      var colors = ['red', 'green', 'blue'];
+
+      function changeBackground (time) {
+        requestAnimationFrame(changeBackground);
+
+        lastTime = lastTime ? lastTime : time;
+        var delta = time - lastTime;
+        var threshold = greenBackground ? 10 : Math.random() * 10000 + 9000;
+
+        if (delta > threshold) {
+          if (greenBackground) {
+            target.className = '';
+          } else {
+            target.className = colors[Math.floor(Math.random() * 3)];
+          }
+
+          greenBackground = !greenBackground;
+          lastTime = time;
+        }
+      }
+
+      changeBackground(0);
+    </script>
+  </body>
+</html>
