@@ -150,7 +150,7 @@
         width: 47%;
         box-sizing: border-box;
         display: inline-block;
-        padding: 300px 330px;
+        padding: 270px 330px;
         padding-left: 50px;
         vertical-align: top;
       }
@@ -167,10 +167,9 @@
       .menu-item i {
         display: block;
         position: absolute;
-        top: 3px;
+        top: 5px;
         color: white;
         font-family: 'arcade', monospace;
-        right: -85px;
         color: #ff6882;
         font-size: 12px;
         border: 2px solid;
@@ -241,10 +240,10 @@
     <div class="menu-container">
       <div class="menu">
         <div class="menu-item">
-          <a href="#">1. blog</a><i>soon</i>
+          <a href="#">1. blog</a><i style="right:-125px;">coming soon</i>
         </div>
         <div class="menu-item">
-          <a href="#">}. experiments</a><i>soon</i>
+          <a href="#">}. experiments</a><i style="right:-171px;">under construction</i>
         </div>
         <div class="menu-item">
           <a target="_blank" href="https://github.com/alejorod">>. github</a> <br/>
@@ -316,7 +315,7 @@
     })();
 
     let glitch = Glitcher.glitchElement(document.getElementById('glitch'));
-    // glitch.start();
+    glitch.start();
 
     document.querySelectorAll('a').forEach((elem) => {
       let glitch = Glitcher.glitchElement(elem);
@@ -354,7 +353,7 @@
         }
       }
 
-      changeBackground(0);
+      // changeBackground(0);
     </script>
   </body>
 </html>
