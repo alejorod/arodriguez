@@ -91,6 +91,28 @@
   }
 }
 
+@keyframes shake {
+  0% {
+    transform:translateX(0%);
+  }
+  25% {
+    transform:translateX(2%) translateY(4%);
+  }
+  50% {
+    transform:translateX(1%) translateY(-3%);
+  }
+  80% {
+    transform:translateX(0%) translateY(0%);
+  }
+  80.0001% {
+    transform:translateX(-3%) translateY(-5%);
+  }
+
+  100% {
+    transform:translateX(0%) translateY(0%);
+  }
+}
+
 
 /**
  * BACKGROUND STYLES
@@ -157,6 +179,8 @@ body {
 .menu-item {
   position: relative;
   margin: 15px 0;
+  cursor: pointer;
+  height: 20px;
 }
 
 .menu-item i {
@@ -174,6 +198,11 @@ body {
   box-shadow: 0 2px;
 }
 
+.menu-item.selected i {
+  color: #a3e048;
+  animation: shake 0.3s infinite;
+}
+
 .menu a {
   position: relative;
   font-family: 'arcade', monospace;
@@ -186,10 +215,6 @@ body {
 
 .menu a:focus {
   outline: none;
-}
-
-.menu-item {
-  cursor: pointer;
 }
 
 .menu-item.selected a {
