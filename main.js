@@ -1,8 +1,9 @@
-let Glitcher = (function() {
-  let glitchChars = '@#><}@{}()@-_*&%@!~abcdefghijkhlmnopqrstjk';
+var Glitcher = (function() {
+  var glitchChars = '@#><}@{}()@-_*&%@!~abcdefghijkhlmnopqrstjk';
+
   function Glitcher(elem) {
     this.target = elem;
-    this.originalText = elem.innerText;
+    this.originalText = elem.textContent;
     this.animationId = null;
     this.lastUpdate = 0;
     this.threshold = 140;
@@ -11,7 +12,7 @@ let Glitcher = (function() {
 
   Glitcher.prototype.stop = function () {
     cancelAnimationFrame(this.animationId);
-    this.target.innerText = this.originalText;
+    this.target.textContent = this.originalText;
   };
 
   Glitcher.prototype.start = function (time) {
@@ -37,9 +38,9 @@ let Glitcher = (function() {
             glitchText = glitchText.substr(0, index) + glitchChar + glitchText.substr(index + 1, glitchText.length);
           }
         }
-        this.target.innerText = glitchText;
+        this.target.textContent = glitchText;
       } else {
-        this.target.innerText = this.originalText;
+        this.target.textContent = this.originalText;
         this.threshold *= (Math.random() + 14);
         this.glitchSteps = Math.round(Math.random() * 3) + 3;
       }
@@ -53,17 +54,17 @@ let Glitcher = (function() {
   };
 })();
 
-document.querySelectorAll('.glitch').forEach(function(elem) {
+[].forEach.call(document.querySelectorAll('.glitch'), function(elem) {
   Glitcher.glitch(elem).start();
 });
 
-document.querySelectorAll('.glitch-hover').forEach((elem) => {
-  let glitch = Glitcher.glitch(elem);
+[].forEach.call(document.querySelectorAll('.glitch-hover'), function(elem) {
+  var glitch = Glitcher.glitch(elem);
   elem.glitch = glitch;
 });
 
 function selectMenuItem(elem) {
-  document.querySelectorAll('.menu-item').forEach(function(elem) {
+  [].forEach.call(document.querySelectorAll('.menu-item'), function(elem) {
     elem.className = elem.className.replace('selected', '');
     [].forEach.call(elem.children, function(c) {
       if (c.glitch) {
@@ -84,15 +85,15 @@ function selectMenuItem(elem) {
   });
 }
 
-document.querySelectorAll('.menu-item').forEach(function(elem) {
+[].forEach.call(document.querySelectorAll('.menu-item'), function(elem) {
   elem.addEventListener('mouseenter', function() {
     selectMenuItem(elem);
   });
 });
 
 window.onkeydown = function(e) {
-  let selectedElement = document.querySelector('.selected');
-  let allItems = document.querySelectorAll('.menu-item');
+  var selectedElement = document.querySelector('.selected');
+  var allItems = document.querySelectorAll('.menu-item');
 
   // 38 UP
   if (e.keyCode == 38) {
